@@ -1,0 +1,26 @@
+{
+  "name": "projeto2_back",
+  "version": "1.0.0",
+  "description": "Projeto Criado para obter créditos na matéria de Desenvolvimento Web da Unifei",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BernardoDomingues/projeto2_back.git"
+  },
+  "author": "Bernardo Domingues & Vinicius Santos",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  },
+  "bugs": {
+    "url": "https://github.com/BernardoDomingues/projeto2_back/issues"
+  },
+  "homepage": "https://github.com/BernardoDomingues/projeto2_back#readme",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  }
+}
