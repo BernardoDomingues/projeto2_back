@@ -3,6 +3,7 @@ const express = require("express");
 // Importa Controllers
 const { version } = require("./Controller/version");
 const { register } = require("./Controller/register");
+const { login } = require("./Controller/login");
 const cors = require("./config/cors");
 const PORT = 5000; // Porta
 
@@ -15,6 +16,7 @@ app.use(cors);
 // Rotas
 app.get("/", version);
 app.post("/register", register);
+app.post("/login", login);
 
 // Declaração do App
 app.listen(PORT, () => {
