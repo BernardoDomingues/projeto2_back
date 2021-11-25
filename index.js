@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rotas
-app.get("/version", version);
+app.get("/", version);
 app.post("/register", register);
 
 // Declaração do App
