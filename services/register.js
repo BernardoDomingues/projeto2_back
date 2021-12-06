@@ -1,9 +1,12 @@
-const { users } = require("../users");
+const firebase = require("firebase");
+const config = require("../config/database");
+firebase.initializeApp(config);
+const db = firebase.firestore();
 
-module.exports.registerService = (body) => {
-  users.push(body);
+module.exports.registerService = async (body) => {
+  const saveDatabase = await db.collection("users").doc().set(body);
   return {
     status: true,
-    description: "Os dados foram recebidos com sucesso.",
+    saveDatabase,
   };
 };
