@@ -1,4 +1,5 @@
 const {registerService} = require("../services/register");
+const firebase = require("firebase");
 
 const register = (req, res) => {
     const { body } = req
