@@ -1,7 +1,7 @@
 const firebase = require("firebase");
 const config = require("../config/database");
-firebase.initializeApp(config);
-const db = firebase.firestore();
+const app = firebase.initializeApp(config);
+const db = firebase.firestore(app);
 
 module.exports.registerService = async (body) => {
   const saveDatabase = await db.collection("users").doc().set(body);
