@@ -4,6 +4,7 @@ const express = require("express");
 const { version } = require("./Controller/version");
 const { register } = require("./Controller/register");
 const { login } = require("./Controller/login");
+const { moviesData } = require("./Controller/moviesData");
 const cors = require("./config/cors");
 const PORT = 5000; // Porta
 
@@ -17,6 +18,7 @@ app.use(cors);
 app.get("/", version);
 app.post("/register", register);
 app.post("/login", login);
+app.post("/movies", moviesData);
 
 // Declaração do App
 app.listen(PORT, () => {
