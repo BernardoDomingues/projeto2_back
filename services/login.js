@@ -1,17 +1,33 @@
-const { users } = require("../users");
+const bcrypt = require("bcryptjs"); //Criptografia da senha
+const { db } = require("../config/firebaseDb");
 
-module.exports.loginService = (body) => {
-  let loginStatus = false;
-  let userData = {}
-  for (const user of users) {
-    if (user.email === body.email && user.password === body.password) {
-      loginStatus = true;
-      userData = user;
-    }
-  }
-  return {
-    status: loginStatus,
-    userData: userData,
-    description: "Os dados foram recebidos com sucesso.",
-  };
+module.exports.loginService = async (body) => {
+  let returnValue = {};
+  await db
+    .collection("users")
+    .where("email", "==", body.email)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const userData = doc.data();
+        const comparePassword = bcrypt.compareSync(
+          body.password,
+          userData.password
+        );
+        if (comparePassword) {
+          returnValue = {
+            status: true,
+            userData: userData,
+            description: "Os dados foram recebidos com sucesso.",
+          };
+        } else {
+          returnValue = {
+            status: false,
+            userData: {},
+            description: "Dados Incorretos.",
+          };
+        }
+      });
+    });
+  return returnValue;
 };

@@ -1,9 +1,9 @@
 const {loginService} = require("../services/login");
 
-const login = (req, res) => {
+const login = async (req, res) => {
     const { body } = req
     try {
-        const response = loginService(body);
+        const response = await loginService(body);
         return res.status(200).json(response);
       } catch (error) {
         return res.status(error.status || 500).json({

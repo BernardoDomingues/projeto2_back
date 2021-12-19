@@ -19,6 +19,8 @@ app.get("/", version);
 app.post("/register", register);
 app.post("/login", login);
 app.post("/movies", moviesData);
+// app.put("/updateUser", );
+// app.delete("/deleteUser", );
 
 // Declaração do App
 app.listen(PORT, () => {
