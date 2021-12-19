@@ -1,9 +1,11 @@
-const { registerService } = require("../services/register");
+const { update, del } = require("../services/users");
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
+  const { id } = req.params;
   const { body } = req;
+
   try {
-    const response = registerService(body);
+    const response = await update(id, body);
     return res.status(200).json(response);
   } catch (error) {
     return res.status(error.status || 500).json({
@@ -15,9 +17,8 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
   const { id } = req.params;
-  const { body } = req;
   try {
-    const response = registerService(body);
+    const response = del(id);
     return res.status(200).json(response);
   } catch (error) {
     return res.status(error.status || 500).json({

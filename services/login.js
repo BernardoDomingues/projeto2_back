@@ -15,9 +15,10 @@ module.exports.loginService = async (body) => {
           userData.password
         );
         if (comparePassword) {
+          console.log(userData);
           returnValue = {
             status: true,
-            userData: userData,
+            userData: {...userData, id: doc.id},
             description: "Os dados foram recebidos com sucesso.",
           };
         } else {

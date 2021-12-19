@@ -5,6 +5,7 @@ const { version } = require("./Controller/version");
 const { register } = require("./Controller/register");
 const { login } = require("./Controller/login");
 const { moviesData } = require("./Controller/moviesData");
+const { updateUser, deleteUser } = require("./Controller/users");
 const cors = require("./config/cors");
 const PORT = 5000; // Porta
 
@@ -19,8 +20,8 @@ app.get("/", version);
 app.post("/register", register);
 app.post("/login", login);
 app.post("/movies", moviesData);
-// app.put("/updateUser", );
-// app.delete("/deleteUser", );
+app.put("/updateUser/:id", updateUser);
+app.delete("/deleteUser/:id", deleteUser);
 
 // Declaração do App
 app.listen(PORT, () => {
